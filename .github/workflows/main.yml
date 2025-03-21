@@ -39,7 +39,7 @@ jobs:
         run: wsl -- ls -al /mnt/d/a/ms-hosted-windows-2025/ms-hosted-windows-2025/
 
       - name: install docker
-        run: wsl -- sudo /mnt/d/a/ms-hosted-windows-2025/ms-hosted-windows-2025/docker-install.sh
+        run: wsl -- bash /mnt/d/a/ms-hosted-windows-2025/ms-hosted-windows-2025/docker-install.sh
 
       - name: run hello world
         run: wsl -- sudo docker run hello-world
