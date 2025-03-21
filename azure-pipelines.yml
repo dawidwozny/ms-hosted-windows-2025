@@ -24,3 +24,5 @@ steps:
   displayName: enable "Virtual Machine Platform"
 
 - powershell: wsl --install Ubuntu
+
+- powershell: wsl -- ls

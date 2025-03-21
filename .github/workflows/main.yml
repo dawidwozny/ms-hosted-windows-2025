@@ -19,3 +19,9 @@ jobs:
 
       - name: install wsl ubuntu
         run: wsl --install Ubuntu
+
+      - name: install wsl ubuntu
+        run: wsl -- ls -al
+
+
+        
