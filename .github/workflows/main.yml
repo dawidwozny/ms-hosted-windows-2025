@@ -38,8 +38,17 @@ jobs:
       - name: list mnt
         run: wsl -- ls -al /mnt/d/a/ms-hosted-windows-2025/ms-hosted-windows-2025/
 
+      - name: copy native
+        run: |
+          wsl -- mkdir -p ~/source
+          cp -r /mnt/d/a/ms-hosted-windows-2025/ms-hosted-windows-2025 ~/source/
+          chmod +x ~/source/docker-install.sh
+
       - name: install docker
-        run: wsl -- bash /mnt/d/a/ms-hosted-windows-2025/ms-hosted-windows-2025/docker-install.sh
+        run: wsl -- bash ~/source/docker-install.sh
+
+      # - name: install docker
+      #   run: wsl -- bash /mnt/d/a/ms-hosted-windows-2025/ms-hosted-windows-2025/docker-install.sh
 
       - name: run hello world
         run: wsl -- sudo docker run hello-world
