@@ -32,6 +32,9 @@ jobs:
       - name: list mnt
         run: wsl -- ls -al /mnt
 
+      - name: list mnt
+        run: wsl -- ls -al /mnt/d
+
       - name: install docker
         run: wsl -- /docker-install.sh
 
