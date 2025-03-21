@@ -10,3 +10,4 @@ steps:
 - powershell:  Write-Host Hello, world!
   displayName: 'Run a one-line script'
 
+- powershell: wsl --list --verbose
