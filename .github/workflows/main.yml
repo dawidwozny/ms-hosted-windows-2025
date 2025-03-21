@@ -49,15 +49,17 @@ jobs:
         run: |
           wsl -- sudo apt-get update
           wsl -- sudo apt-get install curl
+          wsl -- sudo apt-get install dos2unix
 
       - name: copy native
         run: |
           wsl -- mkdir -p ~/source
           wsl -- cp /mnt/d/a/ms-hosted-windows-2025/ms-hosted-windows-2025/docker-install.sh ~/source/docker-install.sh
           wsl -- chmod +x ~/source/docker-install.sh
+          wsl -- dos2unix ~/source/docker-install.sh
 
       - name: install docker
-        run: wsl -- bash /home/root/source/docker-install.sh
+        run: wsl -- ~/source/docker-install.sh
 
       # - name: install docker
       #   run: wsl -- bash /mnt/d/a/ms-hosted-windows-2025/ms-hosted-windows-2025/docker-install.sh
