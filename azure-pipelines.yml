@@ -9,10 +9,10 @@ pool:
 steps:
 - powershell: wsl --version
   displayName: check version of wsl
-  
+
 - powershell:  Write-Host Hello, world!
   displayName: 'Run a one-line script'
 
 - powershell: wsl --list --online
 
-- powershell: wsl --install Ubuntu-22.04 
+- powershell: wsl --install -d Ubuntu
