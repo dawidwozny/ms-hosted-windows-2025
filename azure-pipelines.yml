@@ -23,4 +23,4 @@ steps:
 - powershell: wsl.exe --install --no-distribution
   displayName: enable "Virtual Machine Platform"
 
-- powershell: wsl --install
+- powershell: wsl --install Ubuntu
