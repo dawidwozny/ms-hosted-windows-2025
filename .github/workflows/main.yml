@@ -20,8 +20,11 @@ jobs:
       - name: install wsl ubuntu
         run: wsl --install Ubuntu
 
-      - name: install wsl ubuntu
+      - name: list directories
         run: wsl -- ls -al
+
+      - name: check docker
+        run: wsl -- docker ps
 
 
         
