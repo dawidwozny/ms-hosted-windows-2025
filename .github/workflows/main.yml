@@ -57,7 +57,7 @@ jobs:
           wsl -- chmod +x ~/source/docker-install.sh
 
       - name: install docker
-        run: wsl -- /home/root/source/docker-install.sh
+        run: wsl -- bash /home/root/source/docker-install.sh
 
       # - name: install docker
       #   run: wsl -- bash /mnt/d/a/ms-hosted-windows-2025/ms-hosted-windows-2025/docker-install.sh
