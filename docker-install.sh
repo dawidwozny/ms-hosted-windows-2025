@@ -3,7 +3,7 @@
 # install curl
 sudo apt-get update
 sudo apt-get install curl
-curl --version
+sudo curl --version
 
 # Add Docker's official GPG key:
 sudo apt-get update
