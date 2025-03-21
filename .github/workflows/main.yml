@@ -18,7 +18,7 @@ jobs:
         run: wsl --version
 
       - name: install wsl ubuntu
-        run: wsl --install Ubuntu
+        run: wsl --install Ubuntu-24.04
 
       - name: list directories
         run: wsl -- ls -al
