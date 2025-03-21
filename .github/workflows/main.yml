@@ -29,6 +29,9 @@ jobs:
       - name: list home
         run: wsl -- ls -al /home
 
+      - name: list mnt
+        run: wsl -- ls -al /mnt
+
       - name: install docker
         run: wsl -- /docker-install.sh
 
