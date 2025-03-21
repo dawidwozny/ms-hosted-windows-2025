@@ -10,6 +10,9 @@ steps:
 - powershell: wsl --version
   displayName: check version of wsl
 
+- powershell: wsl --set-default-version 2
+  displayName: set wsl 2 default
+
 - powershell:  Write-Host Hello, world!
   displayName: 'Run a one-line script'
 
