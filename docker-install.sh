@@ -1,7 +1,7 @@
-
+#!/bin/sh
 # install curl
-sudo apt update
-sudo apt install curl
+sudo apt-get update
+sudo apt-get install curl
 curl --version
 
 
