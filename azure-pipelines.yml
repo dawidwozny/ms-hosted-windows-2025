@@ -13,13 +13,14 @@ steps:
 - powershell: wsl --set-default-version 2
   displayName: set wsl 2 default
 
-- powershell: |
-    dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
-    dism.exe /online /enable-feature /featurename:Microsoft-Hyper-V-All /all /norestart
-  displayName: enable hyper-v
+# - powershell: |
+#     dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+#     dism.exe /online /enable-feature /featurename:Microsoft-Hyper-V-All /all /norestart
+#   displayName: enable hyper-v
 
 - powershell: wsl --list --online
 
 - powershell: wsl.exe --install --no-distribution
   displayName: enable "Virtual Machine Platform"
+
 - powershell: wsl --install
