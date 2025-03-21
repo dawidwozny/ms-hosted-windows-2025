@@ -18,4 +18,6 @@ steps:
 
 - powershell: wsl --list --online
 
+- powershell: wsl.exe --install --no-distribution
+  displayName: enable "Virtual Machine Platform"
 - powershell: wsl --install
