@@ -36,7 +36,7 @@ jobs:
         run: wsl -- pwd
 
       - name: list mnt
-        run: wsl -- ls -al /mnt/c/
+        run: wsl -- ls -al /mnt/d/a/ms-hosted-windows-2025/ms-hosted-windows-2025/
 
       - name: install docker
         run: wsl -- /mnt/d/a/ms-hosted-windows-2025/ms-hosted-windows-2025/docker-install.sh
