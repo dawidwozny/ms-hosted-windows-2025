@@ -11,3 +11,5 @@ steps:
   displayName: 'Run a one-line script'
 
 - powershell: wsl --list --online
+
+- powershell: wsl --install Ubuntu-22.04 
