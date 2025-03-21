@@ -1,5 +1,5 @@
 #!/bin/sh
-export PATH=$PATH:/usr/local/bin:/usr/bin:/bin  
+export PATH=$PATH:/usr/local/bin
 # install curl
 sudo apt-get update
 sudo apt-get install curl
