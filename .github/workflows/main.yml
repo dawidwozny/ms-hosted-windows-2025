@@ -29,6 +29,9 @@ jobs:
       - name: run hello world
         run: wsl -- sudo docker run hello-world
 
+      - name: run windows docker
+        run: docker ps
+
 
 
 
