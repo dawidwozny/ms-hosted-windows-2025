@@ -24,7 +24,7 @@ jobs:
         run: wsl -- ls -al
 
       - name: install docker
-        run: wsl -- docker-install.sh
+        run: wsl -- /docker-install.sh
 
       - name: run hello world
         run: wsl -- sudo docker run hello-world
