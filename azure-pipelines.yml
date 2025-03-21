@@ -7,6 +7,9 @@ pool:
   vmImage: windows-2025
 
 steps:
+- powershell: wsl --version
+  displayName: check version of wsl
+  
 - powershell:  Write-Host Hello, world!
   displayName: 'Run a one-line script'
 
