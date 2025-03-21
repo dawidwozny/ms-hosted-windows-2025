@@ -23,6 +23,9 @@ jobs:
       - name: list directories
         run: wsl -- ls -al
 
+      - name: list root
+        run: wsl -- ls -al /
+
       - name: install docker
         run: wsl -- /docker-install.sh
 
