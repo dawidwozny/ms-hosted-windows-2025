@@ -41,7 +41,7 @@ jobs:
       - name: copy native
         run: |
           wsl -- mkdir -p ~/source
-          cp -r /mnt/d/a/ms-hosted-windows-2025/ms-hosted-windows-2025/* ~/source/
+          cp /mnt/d/a/ms-hosted-windows-2025/ms-hosted-windows-2025/docker-install.sh ~/source/docker-install.sh
           chmod +x ~/source/docker-install.sh
 
       - name: install docker
