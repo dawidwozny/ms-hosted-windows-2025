@@ -20,23 +20,23 @@ jobs:
       - name: install wsl ubuntu
         run: wsl --install Ubuntu-24.04
 
-      - name: list directories
-        run: wsl -- ls -al
+      # - name: list directories
+      #   run: wsl -- ls -al
 
-      - name: list root
-        run: wsl -- ls -al /
+      # - name: list root
+      #   run: wsl -- ls -al /
 
-      - name: list home
-        run: wsl -- ls -al /home
+      # - name: list home
+      #   run: wsl -- ls -al /home
 
-      - name: list mnt
-        run: wsl -- ls -al /mnt
+      # - name: list mnt
+      #   run: wsl -- ls -al /mnt
 
-      - name: pwd
-        run: wsl -- pwd
+      # - name: pwd
+      #   run: wsl -- pwd
 
-      - name: list mnt
-        run: wsl -- ls -al /mnt/d/a/ms-hosted-windows-2025/ms-hosted-windows-2025/
+      # - name: list mnt
+      #   run: wsl -- ls -al /mnt/d/a/ms-hosted-windows-2025/ms-hosted-windows-2025/
 
 
       # - name: copy native
@@ -45,30 +45,31 @@ jobs:
       #     wsl -- cp /mnt/d/a/ms-hosted-windows-2025/ms-hosted-windows-2025/docker-install.sh ~/source/docker-install.sh
       #     wsl -- chmod +x ~/source/docker-install.sh
 
-      - name: install curl
+      - name: install dos2unix
         run: |
           wsl -- sudo apt-get update
-          wsl -- sudo apt-get install curl
+          # wsl -- sudo apt-get install curl
           wsl -- sudo apt-get install dos2unix
 
       - name: copy native
         run: |
-          wsl -- mkdir -p ~/source
-          wsl -- cp /mnt/d/a/ms-hosted-windows-2025/ms-hosted-windows-2025/docker-install.sh ~/source/docker-install.sh
-          wsl -- chmod +x ~/source/docker-install.sh
-          wsl -- dos2unix ~/source/docker-install.sh
-          wsl -- dos2unix ./docker-install.sh
+          # wsl -- mkdir -p ~/source
+          # wsl -- cp /mnt/d/a/ms-hosted-windows-2025/ms-hosted-windows-2025/docker-install.sh ~/source/docker-install.sh
+          # wsl -- chmod +x ~/source/docker-install.sh
+          # wsl -- dos2unix ~/source/docker-install.sh
+          # wsl -- dos2unix ./docker-install.sh
 
       - name: install docker
-        run: wsl -- ./docker-install.sh
+        run: | 
+          wsl -- dos2unix ./docker-install.sh
+          wsl -- ./docker-install.sh
 
       # - name: install docker
       #   run: wsl -- bash /mnt/d/a/ms-hosted-windows-2025/ms-hosted-windows-2025/docker-install.sh
 
       - name: run hello world
         run: wsl -- sudo docker run hello-world
-
-      
+   
       - name: run web server
         run: wsl -- sudo docker run -d -p 8080:80 --name simple-web-server nginx
 
