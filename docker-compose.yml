@@ -4,7 +4,7 @@ services:
     ports:
       - "1433:1433"
     environment:
-     - MSSQL_SA_PASSWORD=SecretPassword9! 
+     - MSSQL_SA_PASSWORD=SecretPassword9!
      - ACCEPT_EULA=Y
   web:
     image: nginx

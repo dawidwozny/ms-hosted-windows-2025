@@ -33,29 +33,32 @@ jobs:
       - name: compose up
         run: wsl -- sudo docker compose -p test-setup up -d
 
-      - name: compose logs
-        run: wsl -- sudo docker compose -p test-setup logs
-
-      - name: curl inside wsl
+      - name: curl (wsl)
         run: wsl -- curl http://localhost:8080
 
-      - name: invoke-request powershel
+      - name: web-request (windows)
         run: Invoke-WebRequest -Uri http://localhost:8080
 
-      - name: run windows docker
+      - name: docker ps (wsl)
+        run: wsl -- sudo docker ps
+
+      - name: docker ps (windows)
         run: docker ps
 
-      - name: run db server
-        run: wsl -- sudo docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=SecretPass94" -p 1433:1433 --name sql1 --hostname sql1 -d mcr.microsoft.com/mssql/server:2022-latest
+      # - name: run db server
+      #   run: wsl -- sudo docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=SecretPass94" -p 1433:1433 --name sql1 --hostname sql1 -d mcr.microsoft.com/mssql/server:2022-latest
       
-      - name: wait for server to start
+      - name: wait on db (windows)
         run: |
           $miliSeconds = 60*1000;
           $task = [System.Threading.Tasks.Task]::Delay($miliSeconds)
           $task.Wait()
 
-      - name: logs from db server
-        run: wsl -- sudo docker logs sql1
+      - name: compose logs
+        run: wsl -- sudo docker compose -p test-setup logs
+
+      # - name: logs from db server
+      #   run: wsl -- sudo docker logs sql1
 
       - name: wsl host name
         run: wsl hostname -I
@@ -73,9 +76,9 @@ jobs:
           sqlcmd `
           -S localhost,1433 `
           -U sa `
-          -P "SecretPass94" `
+          -P "SecretPassword9!" `
           -Q "SELECT name FROM sys.databases" `
-          -No
+          -N
 
 
 
