@@ -5,21 +5,12 @@ services:
       - "1433:1433"
     environment:
      - MSSQL_SA_PASSWORD=SecretPassword9!
-     - MSSQL_PID=Developer
      - ACCEPT_EULA=Y
     volumes:
       - ./database/data:/var/opt/mssql/data
       - ./database/log:/var/opt/mssql/log
       - ./database/backup:/var/opt/mssql/backup
-  #   networks:
-  #     - my_network
   web:
     image: nginx
     ports:
       - "8080:80"
-    # networks:
-    #   - my_network
-
-# networks:
-#   my_network:
-#     driver: bridge
