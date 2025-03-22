@@ -11,7 +11,9 @@ services:
       - ./database/data:/var/opt/mssql/data
       - ./database/log:/var/opt/mssql/log
       - ./database/backup:/var/opt/mssql/backup
+    network_mode: "bridge"
   web:
     image: nginx
     ports:
       - "80:80"
+    network_mode: "bridge"
