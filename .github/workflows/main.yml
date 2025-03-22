@@ -69,7 +69,13 @@ jobs:
         run: sqlcmd -?
 
       - name: verify sqlcmd
-        run: sqlcmd -S localhost,1433 -U sa -P "SecretPass94" -Q "SELECT name FROM sys.databases"
+        run: |
+          sqlcmd `
+          -S localhost,1433 `
+          -U sa `
+          -P "SecretPass94" `
+          -Q "SELECT name FROM sys.databases" `
+          -No
 
 
 
