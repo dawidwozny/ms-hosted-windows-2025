@@ -97,6 +97,9 @@ jobs:
       - name: logs from db server
         run: wsl -- sudo docker logs sql1
 
+      - name: wsl host name
+        run: wsl hostname -I
+
       - name: install sqlcmd
         run: |
           choco install sqlcmd-tools -y
