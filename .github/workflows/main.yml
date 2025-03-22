@@ -26,27 +26,17 @@ jobs:
           wsl -- sudo apt-get install dos2unix
           wsl -- dos2unix ./docker-install.sh
           wsl -- ./docker-install.sh
-
-      - name: run hello world
-        run: wsl -- sudo docker run hello-world
    
       - name: compose up
-        run: wsl -- sudo docker compose -p test-setup up -d
-
-      - name: curl (wsl)
-        run: wsl -- curl http://localhost:8080
-
-      - name: web-request (windows)
-        run: Invoke-WebRequest -Uri http://localhost:8080
+        run: |
+          wsl -- sudo docker compose pull -q  
+          wsl -- sudo docker compose -p test-setup up -d
 
       - name: docker ps (wsl)
         run: wsl -- sudo docker ps
 
       - name: docker ps (windows)
         run: docker ps
-
-      # - name: run db server
-      #   run: wsl -- sudo docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=SecretPass94" -p 1433:1433 --name sql1 --hostname sql1 -d mcr.microsoft.com/mssql/server:2022-latest
       
       - name: wait on db (windows)
         run: |
@@ -54,31 +44,28 @@ jobs:
           $task = [System.Threading.Tasks.Task]::Delay($miliSeconds)
           $task.Wait()
 
+      - name: curl (wsl)
+        run: wsl -- curl http://localhost:8080
+
+      - name: web-request (windows)
+        run: Invoke-WebRequest -Uri http://localhost:8080
+
       - name: compose logs
         run: wsl -- sudo docker compose -p test-setup logs
 
-      # - name: logs from db server
-      #   run: wsl -- sudo docker logs sql1
+      - name: install powershell SqlServer
+        run: Install-Module -Name SqlServer -Scope CurrentUser -Force  
 
-      - name: wsl host name
-        run: wsl hostname -I
-
-      - name: install sqlcmd
+      - name: execute query (windows)
         run: |
-          choco install sqlcmd-tools -y
-          refreshenv
+          Invoke-Sqlcmd `
+          -ServerInstance "localhost,1433" `
+          -Database master `
+          -Username "sa" `
+          -Password "SecretPassword9!" ` 
+          -TrustServer `
+          -Query "SELECT name FROM sys.databases" 
 
-      - name: verify sqlcmd
-        run: sqlcmd -?
-
-      - name: verify sqlcmd
-        run: |
-          sqlcmd `
-          -S localhost,1433 `
-          -U sa `
-          -P "SecretPassword9!" `
-          -Q "SELECT name FROM sys.databases" `
-          -N
 
 
 
