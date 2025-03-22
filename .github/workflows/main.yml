@@ -53,8 +53,8 @@ jobs:
       # - name: web-request (windows)
       #   run: Invoke-WebRequest -Uri http://localhost:80
 
-      - name: install powershell SqlServer
-        run: Install-Module -Name SqlServer -Scope CurrentUser -Force  
+      # - name: install powershell SqlServer
+      #   run: Install-Module -Name SqlServer -Scope CurrentUser -Force  
 
       - name: execute test query (windows)
         run: |
