@@ -97,15 +97,6 @@ jobs:
           -TrustServer `
           -Query "SELECT * FROM Person;" 
 
-      - name: pull aspnet (windows)
-        run: docker pull mcr.microsoft.com/dotnet/aspnet:8.0-windowsservercore-ltsc2025
-
-      - name: run aspnet (windows)
-        run: docker run -d -p 8081:80 mcr.microsoft.com/dotnet/aspnet:8.0-windowsservercore-ltsc2025
-
-      - name: web-request (windows)
-        run: Invoke-WebRequest -Uri http://localhost:8081
-
       - name: pull 2025 (windows)
         run: docker pull mcr.microsoft.com/dotnet/aspnet:8.0-windowsservercore-ltsc2025
 
