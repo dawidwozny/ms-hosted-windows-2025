@@ -68,7 +68,7 @@ jobs:
       - name: execute test query (windows)
         run: |
           Invoke-Sqlcmd `
-          -ServerInstance "localhost,1433" `
+          -ServerInstance "127.0.0.1,1433" `
           -Database master `
           -Username "sa" `
           -Password "SecretPassword9!" `
@@ -78,7 +78,7 @@ jobs:
       - name: restore db query (windows)
         run: |
           Invoke-Sqlcmd `
-          -ServerInstance "localhost,1433" `
+          -ServerInstance "127.0.0.1,1433" `
           -Database master `
           -Username "sa" `
           -Password "SecretPassword9!" `
@@ -88,7 +88,7 @@ jobs:
       - name: execute test query (windows)
         run: |
           Invoke-Sqlcmd `
-          -ServerInstance "localhost,1433" `
+          -ServerInstance "127.0.0.1,1433" `
           -Database test `
           -Username "sa" `
           -Password "SecretPassword9!" `
