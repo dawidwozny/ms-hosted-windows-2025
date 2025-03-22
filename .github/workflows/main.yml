@@ -56,15 +56,35 @@ jobs:
       - name: install powershell SqlServer
         run: Install-Module -Name SqlServer -Scope CurrentUser -Force  
 
-      - name: execute query (windows)
+      - name: execute test query (windows)
         run: |
           Invoke-Sqlcmd `
           -ServerInstance "localhost,1433" `
           -Database master `
           -Username "sa" `
-          -Password "SecretPassword9!" ` 
+          -Password "SecretPassword9!" `
           -TrustServer `
           -Query "SELECT name FROM sys.databases" 
+
+      - name: restore db query (windows)
+        run: |
+          Invoke-Sqlcmd `
+          -ServerInstance "localhost,1433" `
+          -Database master `
+          -Username "sa" `
+          -Password "SecretPassword9!" `
+          -TrustServer `
+          -Query "RESTORE DATABASE test FROM DISK = '/var/opt/mssql/backup/test.bak' WITH REPLACE;"
+
+      - name: execute test query (windows)
+        run: |
+          Invoke-Sqlcmd `
+          -ServerInstance "localhost,1433" `
+          -Database test `
+          -Username "sa" `
+          -Password "SecretPassword9!" `
+          -TrustServer `
+          -Query "SELECT * FROM Person;" 
 
 
 
