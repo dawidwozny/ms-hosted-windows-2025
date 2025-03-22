@@ -43,15 +43,18 @@ jobs:
           $miliSeconds = 60*1000;
           $task = [System.Threading.Tasks.Task]::Delay($miliSeconds)
           $task.Wait()
+
+      - name: run web server
+        run: wsl -- sudo docker run -d -p 8080:80 --name simple-web-server nginx
           
       - name: compose logs (wsl)
         run: wsl -- sudo docker compose -p test-setup logs
 
-      # - name: curl (wsl)
-      #   run: wsl -- curl http://localhost:80
+      - name: curl (wsl)
+        run: wsl -- curl http://localhost:8080
 
-      # - name: web-request (windows)
-      #   run: Invoke-WebRequest -Uri http://localhost:80
+      - name: web-request (windows)
+        run: Invoke-WebRequest -Uri http://localhost:8080
 
       # - name: install powershell SqlServer
       #   run: Install-Module -Name SqlServer -Scope CurrentUser -Force  
