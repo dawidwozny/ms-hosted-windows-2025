@@ -30,11 +30,11 @@ jobs:
       - name: run hello world
         run: wsl -- sudo docker run hello-world
    
-      - name: run web server
-        run: wsl -- sudo docker run -d -p 8080:80 --name simple-web-server nginx
+      - name: compose up
+        run: wsl -- sudo docker compose -p test-setup up -d
 
-      - name: logs from web server
-        run: wsl -- sudo docker logs simple-web-server
+      - name: compose logs
+        run: wsl -- sudo docker compose -p test-setup logs
 
       - name: curl inside wsl
         run: wsl -- curl http://localhost:8080
