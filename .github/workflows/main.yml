@@ -46,6 +46,9 @@ jobs:
 
       # - name: run web server
       #   run: wsl -- sudo docker run -d -p 8080:80 --name simple-web-server nginx
+
+      - name: docker ps -a (wsl)
+        run: wsl -- sudo docker ps -a
           
       - name: compose logs (wsl)
         run: wsl -- sudo docker compose -p test-setup logs
