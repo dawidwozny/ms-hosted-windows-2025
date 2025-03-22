@@ -48,10 +48,10 @@ jobs:
         run: wsl -- sudo docker compose -p test-setup logs
 
       - name: curl (wsl)
-        run: wsl -- curl http://localhost:8080
+        run: wsl -- curl http://localhost:80
 
       - name: web-request (windows)
-        run: Invoke-WebRequest -Uri http://localhost:8080
+        run: Invoke-WebRequest -Uri http://localhost:80
 
       - name: install powershell SqlServer
         run: Install-Module -Name SqlServer -Scope CurrentUser -Force  
