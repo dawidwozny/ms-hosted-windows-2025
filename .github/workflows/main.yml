@@ -97,6 +97,12 @@ jobs:
           -TrustServer `
           -Query "SELECT * FROM Person;" 
 
+      - name: pull 2025
+        run: docker pull mcr.microsoft.com/windows/servercore:ltsc2025-amd64
+
+      - name: run 2025
+        run: docker run --rm mcr.microsoft.com/windows/servercore:ltsc2025-amd64 powershell -Command "Write-Host 'Hello from the other side!'"
+
 
 
 
