@@ -1,4 +1,4 @@
-name: CI
+name: ci
 
 on:
   push:
@@ -31,9 +31,6 @@ jobs:
           wsl -- sudo apt-get install dos2unix
           wsl -- dos2unix ./docker-install.sh
           wsl -- ./docker-install.sh
-
-      # - name: run web server
-      #   run: wsl -- nohup sudo docker run -d -p 8080:80 --name simple-web-server nginx &
    
       - name: compose up (wsl)
         run: |
@@ -63,9 +60,6 @@ jobs:
 
       - name: web-request (windows)
         run: Invoke-WebRequest -Uri http://localhost:8080
-
-      # - name: install powershell SqlServer
-      #   run: Install-Module -Name SqlServer -Scope CurrentUser -Force  
 
       - name: execute test query (windows)
         run: |
