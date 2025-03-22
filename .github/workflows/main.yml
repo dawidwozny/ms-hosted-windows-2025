@@ -97,6 +97,9 @@ jobs:
       - name: run 2025 (windows)
         run: docker run --rm mcr.microsoft.com/windows/servercore:ltsc2025-amd64 powershell -Command "Write-Host 'Hello from the other side!'"
 
+      - name: web-request (windows) - proof it still works
+        run: Invoke-WebRequest -Uri http://localhost:8080
+
 
 
 
