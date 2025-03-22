@@ -86,7 +86,7 @@ jobs:
       - name: run db server
         run: wsl -- sudo docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=SecretPass94" -p 1433:1433 --name sql1 --hostname sql1 -d mcr.microsoft.com/mssql/server:2022-latest
       
-      - name: logs from db server
+      - name: wait for server to start
         run: |
           $miliSeconds = 60*1000;
           $task = [System.Threading.Tasks.Task]::Delay($miliSeconds)
@@ -104,7 +104,7 @@ jobs:
         run: sqlcmd -?
 
       - name: verify sqlcmd
-        run: sqlcmd -S localhost:1433 -U sa -P SecretPass94 -Q "SELECT name FROM sys.databases"
+        run: sqlcmd -S localhost,1433 -U sa -P "SecretPass94" -Q "SELECT name FROM sys.databases"
 
 
 
