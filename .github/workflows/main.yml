@@ -44,8 +44,8 @@ jobs:
           $task = [System.Threading.Tasks.Task]::Delay($miliSeconds)
           $task.Wait()
 
-      - name: run web server
-        run: wsl -- sudo docker run -d -p 8080:80 --name simple-web-server nginx
+      # - name: run web server
+      #   run: wsl -- sudo docker run -d -p 8080:80 --name simple-web-server nginx
           
       - name: compose logs (wsl)
         run: wsl -- sudo docker compose -p test-setup logs
