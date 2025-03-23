@@ -91,23 +91,22 @@ jobs:
           -TrustServer `
           -Query "SELECT * FROM Person;" 
 
-
       - name: pull 2022
         run: docker pull mcr.microsoft.com/dotnet/samples:aspnetapp-8.0-nanoserver-ltsc2022 -q
 
       - name: run 2022
-        run: docker run -d -p 8081:8080 --name aspnetcore_sample mcr.microsoft.com/dotnet/samples:aspnetapp-8.0-nanoserver-ltsc2022  
+        run: docker run -d -p 8081:8080 --name aspnetcore_sample mcr.microsoft.com/dotnet/samples:aspnetapp-8.0-nanoserver-ltsc2022 --isolation=process
 
       - name: pull 2025 (windows)
         run: docker pull mcr.microsoft.com/dotnet/aspnet:8.0-windowsservercore-ltsc2025
 
-      - name: run 2025 (windows)
-        run: docker run --rm mcr.microsoft.com/windows/servercore:ltsc2025-amd64 powershell -Command "Write-Host 'Hello from the other side!'"
+      - name: run 2025 (windows) - powershel hello
+        run: docker run --rm mcr.microsoft.com/windows/servercore:ltsc2025-amd64 powershell -Command "Write-Host 'Hello from the other side!'" --isolation=process
 
-      - name: web-request (windows) - proof it still works
+      - name: web-request (windows) - proof linux container still works
         run: Invoke-WebRequest -Uri http://localhost:8080
 
-      - name: web-request (windows) - check asp.net 2022 works
+      - name: web-request (windows) - check that asp.net 2022 works
         run: Invoke-WebRequest -Uri http://localhost:8081
 
 
